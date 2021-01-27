@@ -4,13 +4,13 @@
 import PackageDescription
 
 let package = Package(
-    name: "PacketCaptureBPF",
+    name: "PacketCaptureLSF",
     platforms: [.macOS(.v10_15)],
     products: [
         // Products define the executables and libraries a package produces, and make them visible to other packages.
         .library(
-            name: "PacketCaptureBPF",
-            targets: ["PacketCaptureBPF"]),
+            name: "PacketCaptureLSF",
+            targets: ["PacketCaptureLSF"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -25,11 +25,11 @@ let package = Package(
         // Targets are the basic building blocks of a package. A target can define a module or a test suite.
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
-            name: "PacketCaptureBPF",
+            name: "PacketCaptureLSF",
             dependencies: ["PacketStream", "Datable", "Bits", "SwiftQueue"]),
         .testTarget(
-            name: "PacketCaptureBPFTests",
-            dependencies: ["PacketCaptureBPF", "InternetProtocols"]),
+            name: "PacketCaptureLSFTests",
+            dependencies: ["PacketCaptureLSF", "InternetProtocols"]),
     ],
     swiftLanguageVersions: [.v5]
 )

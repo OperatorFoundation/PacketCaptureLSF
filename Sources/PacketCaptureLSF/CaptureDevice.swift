@@ -55,7 +55,6 @@ public class CaptureDevice: PacketStream
     
     public init?(interface: String)
     {
-        
         // accept an interface name
         // does the interface exist and is it up
         
@@ -68,7 +67,22 @@ public class CaptureDevice: PacketStream
         
         if_req.ifr_name = (ifr_name[0], ifr_name[1], ifr_name[2], ifr_name[3], ifr_name[4], ifr_name[5], ifr_name[6], ifr_name[7], ifr_name[8], ifr_name[9], ifr_name[10], ifr_name[11], ifr_name[12], ifr_name[13], ifr_name[14], ifr_name[15])
         //print("interface name defined")
-        
+
+        let sock = socket(PF_PACKET, SOCK_RAW, 0)
+        guard sock != -1 else {return nil} // FIXME - fetch errno
+
+        let sll = sockaddr_ll()
+        guard bind(sock, &sll, sizeof(sll)) != -1 else {return nil}
+
+        //iface_get_id
+        //iface_bind
+        // setsockopt(sock_fd, SOL_SOCKET, SO_TIMESTAMPNS, &nsec_tstamps, sizeof(nsec_tstamps)) < 0) {
+        // snprintf(handle->errbuf, PCAP_ERRBUF_SIZE, "setsockopt: unable to set SO_TIMESTAMPNS");
+        // close(sock_fd);
+        // return PCAP_ERROR;
+
+
+
         // find next available/free bpf device
         // open bpf device
         var fd: Int32 = -1
@@ -287,9 +301,6 @@ public class CaptureDevice: PacketStream
     }
 }
 
-
-
-
 func paddedArray(source: [Int8], targetSize: Int, padValue: Int8) -> [Int8]
 {
     var result: [Int8] = []
@@ -305,7 +316,6 @@ func paddedArray(source: [Int8], targetSize: Int, padValue: Int8) -> [Int8]
     
     return result
 }
-
 
 func printDataBytes(bytes: Data, hexDumpFormat: Bool, seperator: String, decimal: Bool, enablePrinting: Bool = true) -> String
 {

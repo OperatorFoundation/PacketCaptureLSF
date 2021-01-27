@@ -1,7 +1,7 @@
 import XCTest
-@testable import PacketCaptureBPF
+@testable import PacketCaptureLSF
 
-final class PacketCaptureBPFTests: XCTestCase {
+final class PacketCaptureLSFTests: XCTestCase {
     func testExample() {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
@@ -12,7 +12,7 @@ final class PacketCaptureBPFTests: XCTestCase {
         ("testExample", testExample),
     ]
     
-    func testInitBPF() {
+    func testInitLSF() {
         guard let bpfDevice = CaptureDevice(interface: "en0") else
         {
             XCTFail()
@@ -56,12 +56,6 @@ final class PacketCaptureBPFTests: XCTestCase {
 //                print("timestamp: \(packet.timestamp)")
 //                print("bytes in packet: \(packet.payload.count)")
 //            }
-            
-            
         }
-        
     }
-    
-    
-    
 }

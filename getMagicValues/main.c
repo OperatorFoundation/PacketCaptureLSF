@@ -3,7 +3,6 @@
 #include <net/if_dl.h>
 #include <sys/kern_control.h>
 #include <sys/ioctl.h>
-#include <sys/socket.h>
 #include <net/if.h>
 #include <net/route.h>
 #include <errno.h>
@@ -11,6 +10,10 @@
 #include <stdio.h>
 #include <sys/sockio.h>
 #include <net/bpf.h>
+
+#include <sys/socket.h>
+#include <linux/if_packet.h>
+#include <net/ethernet.h>
 
 int main(void)
 {
@@ -47,5 +50,6 @@ int main(void)
     printf("let SIGIO: UInt = %lu\n", SIGIO);
     printf("let FIONREAD: UInt = %lu\n", FIONREAD);
     printf("let SIOCGIFADDR: UInt = %lu\n", SIOCGIFADDR);
+    printf("let AF_PACKET: UInt = %lu\n", AF_PACKET);
     return 0;
 }
