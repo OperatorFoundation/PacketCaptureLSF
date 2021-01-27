@@ -1,6 +1,4 @@
 #include <stdint.h>
-#include <net/if_dl.h>
-#include <sys/kern_control.h>
 #include <sys/ioctl.h>
 #include <net/if.h>
 #include <net/route.h>
