@@ -5,7 +5,6 @@
 #include <errno.h>
 #include <strings.h>
 #include <stdio.h>
-#include <sys/sockio.h>
 #include <net/bpf.h>
 
 #include <sys/socket.h>

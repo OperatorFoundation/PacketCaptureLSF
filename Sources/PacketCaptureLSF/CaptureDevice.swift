@@ -41,7 +41,7 @@ let BIOCSRSIG: UInt = 2147762803
 let SIGIO: UInt = 23
 let FIONREAD: UInt = 1074030207
 let SIOCGIFADDR: UInt = 3223349537
-
+let PF_PACKET: Int32 = 17
 
 public class CaptureDevice: PacketStream
 {

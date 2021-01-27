@@ -25,9 +25,9 @@
 #include <sys/ioctl.h>
 #include <net/bpf.h>
 #include <netinet/in.h>
-#include <sys/socket.h>
 #include <net/if.h>
 #include <poll.h>
 
-
+#include <sys/socket.h>
+#include <linux/if_packet.h>
 
